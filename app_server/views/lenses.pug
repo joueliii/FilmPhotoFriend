@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= 'List of Minolta Lenses'
+  h3= 'Minolta Rokkor Lenses'
+  ul
+    each lense in lenses
+      li= lense.model + ' ' + lense.year
+

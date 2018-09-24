@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= 'List of Minolta Film Cameras'
+  h3= '35mm SLRs'
+  ul
+    each camera in cameras
+      li= camera.model + ' ' + camera.year
+
