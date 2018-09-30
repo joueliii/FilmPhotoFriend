@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('images'));
 
 app.use('/', index); // all route paths starting with '/' will be handled by the index route file (middleware)
 

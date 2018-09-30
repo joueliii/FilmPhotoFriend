@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+a {
+  color: white !important;
+}
+
+.container {
+  margin-top:50px;
+}
+
+.backgroundimage {
+  background-image: url("/images/minoltapyöreä.jpg");
+  width: 400px;
+}
+
+
+
