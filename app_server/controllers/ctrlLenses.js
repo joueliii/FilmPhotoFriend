@@ -1,14 +1,36 @@
+const request = require('request');
+const apiURL = require('./apiURLs');
 
 const lenselist = function(req, res){
-    res.render('lenses',{
-        lenses:
-        [
-            {model: 'Pre MC lenses', year: '1958-1969/70'},
-            {model: 'Early MC Rokkor', year: '1966-1972'},
-            {model: 'Typical MC Rokkor', year: '1972-1975/76'},
-            {model: 'Late MC Rokkor', year: '1975/76-1977'},
-            {model: 'Early MD Rokkor', year: '1977-1979'},
-        ]});
+
+    const path = '/api/lenses';
+    const requestOptions = {
+        url : apiURL.server + path,
+        method : 'GET',
+        json : {},
+        qs : {}
+    };
+
+    request(
+        requestOptions,
+        function (err, response, body){
+            if (err){
+                res.render('error', {message: err.message});
+            }
+            else if (response.statusCode != 200){
+                res.render('error', {message: 'Error accessing API: ' + response.statusMessage + " ("+ response.statusCode + ")" });
+            }
+            else if (!(body instanceof Array)) {
+                res.render('error', {message: 'Unexpected response data'});
+            }
+            else if (!body.length){
+                res.render('error', {message: 'No documents in collection'});
+            }
+            else {
+                res.render('lenses', {lenses: body});
+            }
+        }
+    );
 };
 
 module.exports = {
