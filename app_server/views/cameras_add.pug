@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row
+    h4 Add new camera to the list
+  form(action="", method="post")
+    .form-group.row
+      label Year
+        input.form-control(name="year")
+    .form-group.row
+      label Model
+        input.form-control(name="model")
+    .form-group.row
+      button.btn-primary Add

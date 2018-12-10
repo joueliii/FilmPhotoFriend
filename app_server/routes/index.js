@@ -3,12 +3,17 @@ const router = express.Router();
 
 // Declaring the controllers
 const ctrlMain = require('../controllers/ctrlMain'); // Controller for the Home page
-const ctrlCameras = require('../controllers/ctrlCameras'); // ... for the list of World Cup winners (countries)
-const ctrlLenses = require('../controllers/ctrlLenses'); // ... for the the list of Golden ball winners (players)
+const ctrlCameras = require('../controllers/ctrlCameras'); // ... for the list of cameras
+const ctrlLenses = require('../controllers/ctrlLenses'); // ... for the the list of lenses
 
 // Defining the routes and associating the routes to their corresponding controllers
 router.get('/', ctrlMain.index);  // Home page
-router.get('/cameras', ctrlCameras.cameralist);  // List of World Cup winners (countries)
-router.get('/lenses', ctrlLenses.lenselist);  // List of Golden ball winners (players)
+router.get('/cameras', ctrlCameras.cameraList);  // List of cameras
+router.get('/lenses', ctrlLenses.lensList);  // List of lenses
+
+router
+    .route('/cameras/add')
+    .get(ctrlCameras.showForm)
+    .post(ctrlCameras.addData)
 
 module.exports = router;

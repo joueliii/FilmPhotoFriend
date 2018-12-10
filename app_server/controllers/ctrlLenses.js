@@ -1,7 +1,7 @@
 const request = require('request');
 const apiURL = require('./apiURLs');
 
-const lenselist = function(req, res){
+const lensList = function(req, res){
 
     const path = '/api/lenses';
     const requestOptions = {
@@ -34,5 +34,5 @@ const lenselist = function(req, res){
 };
 
 module.exports = {
-    lenselist
+    lensList
 };
